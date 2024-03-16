@@ -1,5 +1,5 @@
-.config/nvim/lua/core
-.config/nvim/lua/plugins
+.config/nvim/lua/core/
+.config/nvim/lua/plugins/
 .config/nvim/.git
 .config/nvim/.gitignore
 .config/nvim/.ignore
