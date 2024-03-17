@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -162,11 +162,8 @@ vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true, sile
 -- Move current line down - visual mode
 vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
-vim.opt.relativenumber = true
-
-vim.opt.number = true
-
-vim.opt.guicursor = 'n-v-i-c:block-Cursor' -- defines the cursor in all modes to the nice thick block <3
+-- Yummy blocky cursor in all modes <3
+vim.opt.guicursor = 'n-v-i-c:block-Cursor'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -240,6 +237,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  -- File Explorer Tree Sidebar
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
@@ -250,10 +248,66 @@ require('lazy').setup({
     config = function()
       require('nvim-tree').setup {}
       local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', '<C-PageUp>', ':NvimTreeToggle<CR>', opts)
-      vim.api.nvim_set_keymap('n', '<C-PageDown>', ':NvimTreeToggle<CR>', opts)
+      vim.api.nvim_set_keymap('n', '<C-\\>', ':NvimTreeToggle<CR>', opts)
     end,
   },
+  -- Terminal inside nvim
+  {
+    'NvChad/nvterm',
+    config = function()
+      require('nvterm').setup()
+
+      local terminal = require 'nvterm.terminal'
+
+      local toggle_modes = { 'n', 't' }
+      local mappings = {
+        {
+          toggle_modes,
+          '<A-h>',
+          function()
+            terminal.toggle 'horizontal'
+          end,
+        },
+        {
+          toggle_modes,
+          '<A-v>',
+          function()
+            terminal.toggle 'vertical'
+          end,
+        },
+        {
+          toggle_modes,
+          '<A-i>',
+          function()
+            terminal.toggle 'float'
+          end,
+        },
+      }
+      local opts = { noremap = true, silent = true }
+      for _, mapping in ipairs(mappings) do
+        vim.keymap.set(mapping[1], mapping[2], mapping[3], opts)
+      end
+    end,
+  },
+
+  -- Buffers as tabs
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      require('barbar').setup()
+      vim.g.barbar_auto_setup = false
+      local opts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
+      vim.api.nvim_set_keymap('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
+    end,
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -392,8 +446,8 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
-      -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      -- See `:help telescope.builtin`
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
