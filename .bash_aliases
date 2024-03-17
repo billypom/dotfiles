@@ -77,7 +77,7 @@ alias mp42wmv='for i in *.mp4; do ffmpeg -i "$i" -c:v wmv2 -b:v 0 -c:a wmav2 -b:
 alias mp42gif='for i in *.mp4; do ffmpeg -i "$i" -vf "fps=30,scale=320:-1:flags=lanczos" "${i%.*}.gif"; done'
 alias hevc2avc='for i in *.mp4; do ffmpeg -i "$i" -map 0 -c:v libx265 -crf 20 -vf format=yuv420p -c:a copy "${i%.*}_converted.mp4"; done'
 # youtubedl
-alias youtubemp3='python3 ~/utils/youtubedl/main.py'
+alias youtubemp3='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/audio.py'
 # video editing
 function ffmtrim() { # cut/trim a video
     ffmpeg -i "$1" -ss "$2" -t "$3" -c copy "$4"
