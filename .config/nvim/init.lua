@@ -165,6 +165,14 @@ vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, sile
 -- Yummy blocky cursor in all modes <3
 vim.opt.guicursor = 'n-v-i-c:block-Cursor'
 
+-- Remove annoying lsp text in my face bro
+vim.diagnostic.config {
+  virtual_text = false, -- disable inline error messages
+  underline = false, -- disable underline ugly mode
+  signs = true, -- the E on the left is ok
+  update_in_insert = false, -- asdjkf
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -623,7 +631,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
