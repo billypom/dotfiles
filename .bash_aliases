@@ -63,6 +63,8 @@ alias pomdiff='diff --color -u'
 
 # audio conversions
 alias wav2ogg='for i in *.wav; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
+alias wav2320mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 320k "${i%.*}.mp3"; done'
+alias wav2192mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 192k "${i%.*}.mp3"; done'
 alias mp32ogg='for i in *.mp3; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
 alias webm2mp3='for i in *.webm; do ffmpeg -i "$i" -vn -c:a libmp3lame -q:a 0 "${i%.*}.mp3"; done'
 # video conversions
