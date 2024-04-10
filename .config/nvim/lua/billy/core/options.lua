@@ -11,7 +11,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 -- lsp text in my face
 vim.diagnostic.config {
-  virtual_text = true, -- disable inline error messages
+  virtual_text = false, -- disable inline error messages
   underline = true, -- disable underline ugly mode
   signs = true, -- the E on the left is ok
   update_in_insert = true, -- asdjkf

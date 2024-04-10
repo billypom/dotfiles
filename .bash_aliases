@@ -67,6 +67,7 @@ alias wav2320mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 320
 alias wav2192mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 192k "${i%.*}.mp3"; done'
 alias mp32ogg='for i in *.mp3; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
 alias webm2mp3='for i in *.webm; do ffmpeg -i "$i" -vn -c:a libmp3lame -q:a 0 "${i%.*}.mp3"; done'
+alias flac2mp3='for i in *.flac; do ffmpeg -i "$i" -q:a 0 "${i%.*}.mp3"; done'
 # video conversions
 alias mkv2mp4='for i in *.mkv; do ffmpeg -i "$i" -codec copy "${i%.*}.mp4"; done'
 alias mov2mp4='for i in *.mov; do ffmpeg -i "$i" -codec copy "${i%.*}.mp4"; done'
@@ -91,7 +92,6 @@ alias gpt='~/applications/chatgpt-cli/venv/bin/python3 ~/applications/chatgpt-cl
 
 # Run stuff on open
 neofetch
-. "$HOME/.cargo/env"
 
 
 
