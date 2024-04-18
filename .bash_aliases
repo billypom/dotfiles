@@ -81,6 +81,10 @@ alias mp42gif='for i in *.mp4; do ffmpeg -i "$i" -vf "fps=30,scale=320:-1:flags=
 alias hevc2avc='for i in *.mp4; do ffmpeg -i "$i" -map 0 -c:v libx265 -crf 20 -vf format=yuv420p -c:a copy "${i%.*}_converted.mp4"; done'
 # youtubedl
 alias youtubemp3='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/audio.py'
+alias youtubedl='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/video.py'
+alias youtubech='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/channel.py'
+# fonts
+alias ttf2woff='fontforge -script ~/utils/ttf-to-woff.pe' # supply a ttf file after this
 # video editing
 function ffmtrim() { # cut/trim a video
     ffmpeg -i "$1" -ss "$2" -t "$3" -c copy "$4"
