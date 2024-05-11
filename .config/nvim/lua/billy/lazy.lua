@@ -457,6 +457,7 @@ require('lazy').setup({
         html = {},
         pyright = {},
         ruff_lsp = {},
+        cssls = {},
         prettier = {
           settings = {
             tabWidth = 4,

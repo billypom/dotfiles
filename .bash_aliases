@@ -38,6 +38,8 @@ function cd() {
 export PATH="$PATH:$HOME/.local/share/yabridge" # yabridge
 export WINEDEBUG=err,warn # Wine debug 
 export PATH=/path/to/ntlm_auth/directory:$PATH # include ntlm_auth in path, from winbind package
+# DXVK
+export DXVK_HUD=full
 
 # Fcitx east asian input
 export INPUT_METHOD="fcitx"
@@ -50,6 +52,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# dir/ls colors ?
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 # Aliases
 alias vim='~/applications/nvim-linux64/bin/nvim' # nvim
@@ -61,14 +65,14 @@ pomfind() {
 # Difference between files
 alias pomdiff='diff --color -u'
 
-# audio conversions
+# convert audio
 alias wav2ogg='for i in *.wav; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
 alias wav2320mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 320k "${i%.*}.mp3"; done'
 alias wav2192mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 192k "${i%.*}.mp3"; done'
 alias mp32ogg='for i in *.mp3; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
 alias webm2mp3='for i in *.webm; do ffmpeg -i "$i" -vn -c:a libmp3lame -q:a 0 "${i%.*}.mp3"; done'
 alias flac2mp3='for i in *.flac; do ffmpeg -i "$i" -q:a 0 "${i%.*}.mp3"; done'
-# video conversions
+#  convert video
 alias mkv2mp4='for i in *.mkv; do ffmpeg -i "$i" -codec copy "${i%.*}.mp4"; done'
 alias mov2mp4='for i in *.mov; do ffmpeg -i "$i" -codec copy "${i%.*}.mp4"; done'
 alias avi2mp4='for i in *.avi; do ffmpeg -i "$i" -codec copy "${i%.*}.mp4"; done'
@@ -79,11 +83,11 @@ alias mp42webm='for i in *.mp4; do ffmpeg -i "$i" -c:v libvpx-vp9 -crf 20 -b:v 0
 alias mp42wmv='for i in *.mp4; do ffmpeg -i "$i" -c:v wmv2 -b:v 0 -c:a wmav2 -b:a 128k "${i%.*}.wmv"; done'
 alias mp42gif='for i in *.mp4; do ffmpeg -i "$i" -vf "fps=30,scale=320:-1:flags=lanczos" "${i%.*}.gif"; done'
 alias hevc2avc='for i in *.mp4; do ffmpeg -i "$i" -map 0 -c:v libx265 -crf 20 -vf format=yuv420p -c:a copy "${i%.*}_converted.mp4"; done'
-# youtubedl
+# youtubedl 
 alias youtubemp3='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/audio.py'
 alias youtubedl='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/video.py'
 alias youtubech='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/channel.py'
-# fonts
+# convert fonts ttf to woff
 alias ttf2woff='fontforge -script ~/utils/ttf-to-woff.pe' # supply a ttf file after this
 # video editing
 function ffmtrim() { # cut/trim a video
