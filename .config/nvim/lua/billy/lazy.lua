@@ -23,6 +23,13 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   --
   --
+  -- Mario Kart Central dev container mode
+  -- {
+  --   'esensar/nvim-dev-container',
+  --   dependencies = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  -- },
   {
     'MaxMEllon/vim-jsx-pretty',
   },
@@ -48,7 +55,7 @@ require('lazy').setup({
         mode = 'background', -- Set the display mode.
         -- Available methods are false / true / "normal" / "lsp" / "both"
         -- True is same as normal
-        tailwind = false, -- Enable tailwind colors
+        tailwind = true, -- Enable tailwind colors
         -- parsers can contain values used in |user_default_options|
         sass = { enable = false, parsers = { 'css' } }, -- Enable sass colors
         virtualtext = '■',
@@ -452,20 +459,21 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        -- clangd = {},
         -- gopls = {},
-        html = {},
-        pyright = {},
-        ruff_lsp = {},
-        cssls = {},
-        prettier = {
-          settings = {
-            tabWidth = 4,
-          },
-        },
-        tsserver = {},
-        tailwindcss = {},
-        cssmodules_ls = {},
+        -- html = {},
+        -- pyright = {},
+        -- ruff_lsp = {},
+        -- cssls = {},
+        -- prettier = {
+        --   settings = {
+        --     tabWidth = 4,
+        --   },
+        -- },
+        -- tsserver = {},
+        -- tailwindcss = {},
+        -- cssmodules_ls = {},
+        -- svelte = {}, -- Mario Kart Central
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

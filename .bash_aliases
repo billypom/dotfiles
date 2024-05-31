@@ -87,6 +87,7 @@ alias hevc2avc='for i in *.mp4; do ffmpeg -i "$i" -map 0 -c:v libx265 -crf 20 -v
 alias youtubemp3='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/audio.py'
 alias youtubedl='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/video.py'
 alias youtubech='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/channel.py'
+alias dl='~/utils/dl.sh' 
 # convert fonts ttf to woff
 alias ttf2woff='fontforge -script ~/utils/ttf-to-woff.pe' # supply a ttf file after this
 # video editing

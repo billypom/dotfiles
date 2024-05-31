@@ -6,6 +6,8 @@ vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', { noremap = true, silent =
 vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 -- Move current line down - visual mode
 vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+-- select all text
+vim.api.nvim_set_keymap('n', '<C-a>', 'ggVGy<C-o>', { noremap = true, silent = true })
 
 -- Yummy blocky cursor in all modes <3
 vim.opt.guicursor = 'n-v-i-c:block-Cursor'
