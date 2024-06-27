@@ -100,7 +100,6 @@ alias ffmtrim=ffmtrim # input.video start_seconds length_seconds output.video
 alias gpt='~/applications/chatgpt-cli/venv/bin/python3 ~/applications/chatgpt-cli/src/chatgpt.py'
 
 # Run stuff on open
-neofetch
 
 
 
