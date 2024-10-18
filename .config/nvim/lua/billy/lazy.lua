@@ -462,14 +462,15 @@ require('lazy').setup({
         -- gopls = {},
         html = {},
         pyright = {},
-        ruff_lsp = {},
+        -- ruff_lsp = {},
         cssls = {},
         prettier = {
           settings = {
             tabWidth = 4,
           },
         },
-        tsserver = {},
+        -- tsserver = {}, -- doesnt work? idk
+        ts_ls = {},
         tailwindcss = {},
         cssmodules_ls = {},
         svelte = {}, -- Mario Kart Central
