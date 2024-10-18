@@ -22,17 +22,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   --
-  --
-  -- Mario Kart Central dev container mode
-  -- {
-  --   'esensar/nvim-dev-container',
-  --   dependencies = {
-  --     'nvim-treesitter/nvim-treesitter',
-  --   },
-  -- },
+  -- React syntax highlighting and indenting plugin
   {
     'MaxMEllon/vim-jsx-pretty',
   },
+  -- Change the format of the comment string, depending on the
+  -- region of the file (JSX comments)
   {
     'suy/vim-context-commentstring',
   },
@@ -67,7 +62,11 @@ require('lazy').setup({
       buftypes = {},
     },
   },
-  'barklan/capslock.nvim', -- caps lock as esc
+  -- CAPS Lock as ESC
+  {
+    'barklan/capslock.nvim', -- caps lock as esc
+  },
+  -- Left nav pane
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',

@@ -1,6 +1,9 @@
 -- NOTE: For more options, you can see `:help option-list`
 --
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+
+-- Set <space> as the leader key
+-- See `:help mapleader`
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -19,8 +22,6 @@ vim.diagnostic.config {
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10 -- Move current line up - normal mode
 
--- Set <space> as the leader key
--- See `:help mapleader`
 -- [[ Setting options ]]
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
