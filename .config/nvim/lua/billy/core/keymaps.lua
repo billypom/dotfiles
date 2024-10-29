@@ -57,3 +57,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- caps lock as esc
 vim.keymap.set({ 'i', 'c', 'n' }, '<C-g>c', '<Plug>CapsLockToggle')
 vim.keymap.set('i', '<C-l>', '<Plug>CapsLockToggle')
+
+

@@ -59,14 +59,12 @@ test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 alias vim='~/applications/nvim-linux64/bin/nvim' # nvim
 alias o='xdg-open' # Open file explorer
 alias py='python3'
-pomfind() {
-    find . -type f -exec grep -l "$1" {} + 2>/dev/null
-}
 # Difference between files
 alias pomdiff='diff --color -u'
-
+alias pomcontains="grep -Rnw '$1' -e '$2'"
 # convert audio
-alias wav2ogg='for i in *.wav; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
+alias wav2ogg='for i in *.wav; do ffmpeg -i "$i" -ar 44.1k "${i%.*}.ogg"; done'
+alias m4a2wav='for i in *.m4a; do ffmpeg -i "$i" "${i%.*}.wav"; done'
 alias wav2320mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 320k "${i%.*}.mp3"; done'
 alias wav2192mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 192k "${i%.*}.mp3"; done'
 alias mp32ogg='for i in *.mp3; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
@@ -96,11 +94,13 @@ function ffmtrim() { # cut/trim a video
     ffmpeg -i "$1" -ss "$2" -t "$3" -c copy "$4"
 }
 alias ffmtrim=ffmtrim # input.video start_seconds length_seconds output.video
-
-# ChatGPT
+# ChatGPT terminal
 alias gpt='~/applications/chatgpt-cli/venv/bin/python3 ~/applications/chatgpt-cli/src/chatgpt.py'
-
-# Run stuff on open
-
+# proton audio sink
+alias proton-audio='bash ~/utils/proton-audio.sh'
+alias proton-cleanup='bash ~/utils/proton-cleanup.sh'
+alias billy-rsync='bash ~/utils/rsync-backup-home-folder.sh'
+# wine
+alias dn-famitracker="wine ~/applications/dn-famitracker/Dn-Famitracker.exe"
 
 
