@@ -1,3 +1,2 @@
-require('billy.core.options')
-require('billy.core.keymaps')
-
+require 'billy.core.options'
+require 'billy.core.keymaps'
