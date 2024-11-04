@@ -58,4 +58,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set({ 'i', 'c', 'n' }, '<C-g>c', '<Plug>CapsLockToggle')
 vim.keymap.set('i', '<C-l>', '<Plug>CapsLockToggle')
 
+-- display changed files in telescope
+function _G.git_diff(opts)
+  local pickers = require 'telescope.pickers'
+  local finders = require 'telescope.finders'
+  local conf = require('telescope.config').values
+  local list = vim.fn.systemlist 'git diff --name-only main'
 
+  pickers
+    .new(opts, {
+      prompt_title = 'git diff',
+      finder = finders.new_table { results = list },
+      sorter = conf.generic_sorter(opts),
+    })
+    :find()
+end
+
+vim.keymap.set('n', '<leader>g', '', { desc = '[G]it stuff...' })
+vim.keymap.set('n', '<leader>gd', ':lua git_diff()<CR>', { desc = 'List files in Git [D]iff' })
