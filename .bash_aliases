@@ -69,6 +69,7 @@ alias wav2320mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 320
 alias wav2192mp3='for i in *.wav; do ffmpeg -i "$i" -codec:a libmp3lame -b:a 192k "${i%.*}.mp3"; done'
 alias mp32ogg='for i in *.mp3; do ffmpeg -i "$i" "${i%.*}.ogg"; done'
 alias ogg2mp3='for i in *.ogg; do ffmpeg -i "$i" "${i%.*}.mp3"; done'
+alias opus2mp3='for i in *.opus; do ffmpeg -i "$i" "${i%.*}.mp3"; done'
 alias webm2mp3='for i in *.webm; do ffmpeg -i "$i" -vn -c:a libmp3lame -q:a 0 "${i%.*}.mp3"; done'
 alias flac2mp3='for i in *.flac; do ffmpeg -i "$i" -q:a 0 "${i%.*}.mp3"; done'
 #  convert video
