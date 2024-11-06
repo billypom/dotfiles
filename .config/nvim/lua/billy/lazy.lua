@@ -20,26 +20,30 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  -- 'barklan/capslock.nvim', -- caps lock as esc
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'MaxMEllon/vim-jsx-pretty', -- React syntax highlighting and indenting plugin
+  'suy/vim-context-commentstring', -- Change the format of the comment string, depending on the file region
+  -- { -- "gc" to comment visual regions/lines
   --
-  -- harpoon
+  --   'numToStr/Comment.nvim',
+  --   opts = {},
+  --   dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
+  --   config = function()
+  --     require('Comment').setup {
+  --       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+  --     }
+  --   end,
+  -- },
   {
     'ThePrimeagen/harpoon',
+    lazy = false,
     branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('harpoon').setup {}
     end,
   },
-  -- React syntax highlighting and indenting plugin
-  {
-    'MaxMEllon/vim-jsx-pretty',
-  },
-  -- Change the format of the comment string, depending on the
-  -- region of the file (JSX comments)
-  {
-    'suy/vim-context-commentstring',
-  },
+
   -- CSS RGB and HSL coloring inside editor
   {
     'NvChad/nvim-colorizer.lua',
@@ -71,10 +75,7 @@ require('lazy').setup({
       buftypes = {},
     },
   },
-  -- CAPS Lock as ESC
-  {
-    'barklan/capslock.nvim', -- caps lock as esc
-  },
+
   -- Left nav pane
   {
     'nvim-tree/nvim-tree.lua',
@@ -145,34 +146,6 @@ require('lazy').setup({
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
 
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
-  -- NOTE: Plugins can also be added by using a table,
-  -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
-  --
-  -- Use `opts = {}` to force a plugin to be loaded.
-  --
-  --  This is equivalent to:
-  --    require('Comment').setup({})
-
-  -- "gc" to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
-    opts = {},
-    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
-    config = function()
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
-    end,
-  },
-
-  -- Here is a more advanced example where we pass configuration
-  -- options to `gitsigns.nvim`. This is equivalent to the following lua:
-  --    require('gitsigns').setup({ ... })
-  --
-  -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -185,21 +158,6 @@ require('lazy').setup({
       },
     },
   },
-
-  -- NOTE: Plugins can also be configured to run lua code when they are loaded.
-  --
-  -- This is often very useful to both group configuration, as well as handle
-  -- lazy loading plugins that don't need to be loaded immediately at startup.
-  --
-  -- For example, in the following configuration, we use:
-  --  event = 'VimEnter'
-  --
-  -- which loads which-key before all the UI elements are loaded. Events can be
-  -- normal autocommands events (`:help autocmd-events`).
-  --
-  -- Then, because we use the `config` key, the configuration only runs
-  -- after the plugin has been loaded:
-  --  config = function() ... end
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
@@ -255,13 +213,6 @@ require('lazy').setup({
     },
   },
 
-  -- NOTE: Plugins can specify dependencies.
-  --
-  -- The dependencies are proper plugin specifications as well - anything
-  -- you do for a plugin at the top level, you can do for a dependency.
-  --
-  -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -286,6 +237,7 @@ require('lazy').setup({
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
+
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
       -- it can fuzzy find! It's more than just a "file finder", it can search
@@ -516,18 +468,17 @@ require('lazy').setup({
           },
         },
         -- tsserver = {}, -- doesnt work? idk
-        ts_ls = {},
+        -- ts_ls = {},
         tailwindcss = {},
         cssmodules_ls = {},
         svelte = {}, -- Mario Kart Central
         rust_analyzer = {},
+        stimulus_ls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
-        --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        --
 
         lua_ls = {
           -- cmd = {...},
