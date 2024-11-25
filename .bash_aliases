@@ -47,6 +47,10 @@ export XMODIFIERS="@im=fcitx"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 
+# default text editor
+export VISUAL="~/applications/nvim-linux64/bin/nvim"
+export MANPAGER="/home/billy/applications/nvim-linux64/bin/nvim +Man!"
+
 # Use nvm (node version manager)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -59,6 +63,7 @@ test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 alias vim='~/applications/nvim-linux64/bin/nvim' # nvim
 alias o='xdg-open' # Open file explorer
 alias py='python3'
+alias dockernames="docker ps --format '{{.Names}}'"
 # Difference between files
 alias pomdiff='diff --color -u'
 alias pomcontains="grep -Rnw '$1' -e '$2'"
@@ -83,6 +88,8 @@ alias mp42webm='for i in *.mp4; do ffmpeg -i "$i" -c:v libvpx-vp9 -crf 20 -b:v 0
 alias mp42wmv='for i in *.mp4; do ffmpeg -i "$i" -c:v wmv2 -b:v 0 -c:a wmav2 -b:a 128k "${i%.*}.wmv"; done'
 alias mp42gif='for i in *.mp4; do ffmpeg -i "$i" -vf "fps=30,scale=320:-1:flags=lanczos" "${i%.*}.gif"; done'
 alias hevc2avc='for i in *.mp4; do ffmpeg -i "$i" -map 0 -c:v libx265 -crf 20 -vf format=yuv420p -c:a copy "${i%.*}_converted.mp4"; done'
+# convert image
+alias heic2jpg='for i in *.HEIC; do heif-convert "$i" "$i".jpg; done'
 # youtubedl 
 alias youtubemp3='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/audio.py'
 alias youtubedl='~/utils/youtubedl/venv/bin/python3 ~/utils/youtubedl/video.py'
@@ -100,6 +107,7 @@ alias gpt='~/applications/chatgpt-cli/venv/bin/python3 ~/applications/chatgpt-cl
 # proton audio sink
 alias proton-audio='bash ~/utils/proton-audio.sh'
 alias proton-cleanup='bash ~/utils/proton-cleanup.sh'
+alias reaudio='bash ~/utils/restart-audio.sh'
 alias billy-rsync='bash ~/utils/rsync-backup-home-folder.sh'
 # wine
 alias dn-famitracker="wine ~/applications/dn-famitracker/Dn-Famitracker.exe"
